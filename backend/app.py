@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import random
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:3000"])
 
 @app.route("/", methods=["POST"])
 def emotionAnalyzer():
