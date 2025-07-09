@@ -19,8 +19,8 @@ export default function Home() {
   const [emotion, setEmotion] = useState<string>('')
   const [confidence, setConfidence] = useState<number>()
   const submitForm = async (form: FormData) => {
-    const data = form.get("data")
-    const name = form.get("Name")
+    const data = form.get("data") as string
+    const name = form.get("Name") as string
     if (!name) {
       toastError("Name is required!")
       return;
@@ -30,13 +30,17 @@ export default function Home() {
       return;
     }
     try {
+      const form = new URLSearchParams();
+      form.append('Name', name);
+      form.append('data', data);
+      
       const response = await fetch('http://localhost:5000/',
         {
           headers: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
           method: 'POST',
-          body: form
+          body: form.toString()
         }
       )
       if (response.ok) {
