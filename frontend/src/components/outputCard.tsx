@@ -5,7 +5,7 @@ export const OutputCard = ({ emotion, confidence }: { emotion: string, confidenc
         <div className="w-full flex flex-col bg-blue-200 rounded-xl shadow-orange-400 shadow-md md:p-10 p-4">
             <span className="text-blue-700 md:text-lg font-bold sm:text-balance text-sm">Your Analyzed Emotion</span>
             <span className="mb-1">Emotion: <strong>{emotion}</strong></span>
-            <span>Confidence: <strong>{(confidence * 100)}</strong>{"%"}</span>
+            <span>Confidence: <strong>{Math.floor((confidence * 100))}</strong>{"%"}</span>
 
             <Gauge
                 valueMax={100}
