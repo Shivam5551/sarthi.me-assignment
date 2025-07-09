@@ -33,7 +33,7 @@ export default function Home() {
       const response = await fetch('http://localhost:5000/',
         {
           headers: {
-            "content": "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded"
           },
           method: 'POST',
           body: form
